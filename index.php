@@ -23,7 +23,7 @@
               <image src="teaimage.jpg" class="img-thumbnail" width="400px">
             </div>
 
-            <div class="row mt-5"> 
+            <div class="row mt-4"> 
               <div class="col">
                   <h2>Sign-In</h2>
               </div>
@@ -46,6 +46,25 @@
                 </div>
               </div>
             </div>
+
+            <div class="row mt-4">
+              <div class="col col-md-6" style="margin:auto">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </div>
+            </div>
+            
+            <div class="row mt-4">
+              <div style="margin:auto">
+                <p>New around here? Create an account!</p>
+                <a href="register.php">Register</a>
+              </div>
+
+
+            </div>
+          
+
+
+
           </form>
 
         </div>
