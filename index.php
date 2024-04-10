@@ -17,7 +17,7 @@
     <div class="container text-center"> 
         <h1>Tea Form</h1>
         <div class="realform">
-          <form class="row mt-5 ">
+          <form class="row mt-5 mb-4 ">
 
             <div class="col">
               <image src="teaimage.jpg" class="img-thumbnail" width="400px">

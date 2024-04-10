@@ -5,12 +5,10 @@
     margin:auto;
 }
 
-
-
 body{
-    background-color: rgb(255, 255, 255);
-    background-image: url('digital-background-UMBC-admin-view.jpg');
+    background: url("digital-background-UMBC-admin-view.jpg");
 }
+
 
 .realform{
     background-color: rgb(255, 255, 255);
