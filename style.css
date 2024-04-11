@@ -6,6 +6,10 @@
 
 }
 
+body{
+    background: url("digital-background-UMBC-admin-view.jpg");
+    background-size: cover;
+}
 
 
 .realform{

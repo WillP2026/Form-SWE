@@ -13,12 +13,37 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <?php 
+      include("config.php");
+      if(isset($_POST['logging'])){
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $result = mysqli_query($db,"SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $row = mysqli_fetch_assoc($result);
+
+        if(is_array($row) && !empty($row)){
+          $_SESSION['id'] = $row['id'];
+          $_SESSION['username'] = $row['username'];
+          $_SESSION['password'] = $row['password'];
+          $_SESSION['firstname'] = $row['firstname'];
+          $_SESSION['lastname'] = $row['lastname'];
+          header("Location: form.php");
+        }
+        else{
+          echo "<div class='alert alert-danger'> Invalid Username/Password  </div>";
+        }
+
+      }
+    
+    
+    ?>
 
     
     <div class="container text-center"> 
-        <h1>Tea Form</h1>
+        <h1 class="mt-5">UMBC Tea Form</h1>
         <div class="realform">
-          <form class="row mt-5 mb-4 ">
+          <form class="row mt-5 mb-4" method="post">
 
             <div class="col">
               <image src="teaimage.jpg" class="img-thumbnail" width="400px">
@@ -33,8 +58,8 @@
             <div class="row">
               <div class="col col-md-6" style="margin:auto">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Email address</label>
+                  <input type="test" class="form-control" id="username" name="username" placeholder="Username">
+                  <label for="floatingInput">Username</label>
                 </div>
               </div>
             </div>
@@ -42,7 +67,7 @@
             <div class="row">
               <div class="col col-md-6" style="margin:auto">
                 <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                   <label for="floatingPassword">Password</label>
                 </div>
               </div>
@@ -50,7 +75,7 @@
 
             <div class="row mt-4">
               <div class="col col-md-6" style="margin:auto">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary" name="logging">Sign in</button>
               </div>
             </div>
             
