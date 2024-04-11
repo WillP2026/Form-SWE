@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    require_once "config.php";
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,25 +19,60 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <?php 
+      if(isset($_POST['create'])) {
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $check = true;
+        if(strlen($password) > 20 || strlen($password) < 5){
+            $check = false;
+            echo "<div class= 'alert alert-danger'> Password must be 5 to 20 characters long!</div>"; 
+
+        }
+        
+        if(strlen($username) < 5 || strlen($username) > 20){
+            $check = false;
+            echo "<div class= 'alert alert-danger'> Username must be 5 to 20 characters long!</div>"; 
+        }
+        
+        if($check){
+            $duplicate = mysqli_query($db,"SELECT * FROM users WHERE username = '$username'");
+            
+            if(mysqli_num_rows($duplicate) > 0){
+                echo "<div class= 'alert alert-danger'>Username has been taken already!</div>"; 
+
+            }
+            
+            else{
+                $sql = "INSERT INTO users (firstname, lastname, username, password ) VALUES(?,?,?,?)";
+                $stmtinsert = $db->prepare($sql);
+                $result = $stmtinsert->execute([$firstname, $lastname, $username, $password]);
+                echo "<div class= 'alert alert-success'> Registration Successful! </div>"; 
+            }
+        }
+      }
+    ?>
     
     <div class="container text-center" style="margin:auto"> 
         <h1>Tea Form</h1>
         <div class="realform">
-            <form class="row mt-5 ">
+            <form class="row mt-5" method="post">
                 <div class="col col-md-5" style="margin:auto" >
                     <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>
                 </div>
           
                 <div class="col col-md-5" style="margin:auto" >
                     <label class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col col-sm-9"  style="margin:auto">
                         <label class="form-label"> Username </label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                     </div>
                 </div>
 
@@ -39,14 +80,19 @@
                 <div class="row mt-4">
                     <div class="col col-sm-9"  style="margin:auto">
                         <label class="form-label"> Password </label>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary " name="create">Register</button>
                     </div>
+
+                    <div class="col mt-2">
+                        <a href="index.php"> login </a>
+                    </div>
+
                 </div>
             </form>
 
