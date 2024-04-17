@@ -1,16 +1,20 @@
 .realform{
+
+    padding: 20px 70px 20px 70px;
     background-color: rgb(255, 255, 255);
     margin: auto;
     border: 2px solid black;
     border-radius: 10px;
-    width: 50%;
-    height: 550px;
+    width: 60%;
+    height: 100%;
     box-shadow: 0px 10px 10px black;
 }
 
 body{
     background: url("digital-background-UMBC-admin-view.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container{

@@ -8,6 +8,8 @@
 body{
     background: url("digital-background-UMBC-admin-view.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 

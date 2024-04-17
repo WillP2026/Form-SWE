@@ -50,8 +50,8 @@
       }
     ?>
     
-    <div class="container text-center" style="margin:auto"> 
-        <h1>Tea Form</h1>
+    <div class="container text-center"> 
+        <h1>Register</h1>
         <div class="realform">
             <form class="row mt-5" method="post">
                 <div class="col col-md-5" style="margin:auto" >

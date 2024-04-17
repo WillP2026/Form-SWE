@@ -8,7 +8,18 @@
       $row = mysqli_fetch_assoc($result);
     }
 
-
+    $file = fopen("dropdown.csv","r");
+    $csvfile = fgetcsv($file);
+    $index = 0;
+    $rating = array();
+    $teas = array();
+    $temperatures = array();
+    while(($csvfile=fgetcsv($file))!== FALSE){
+        $rating[$index] = $csvfile[0];
+        $teas[$index] = $csvfile[1];
+        $temperatures[$index] = $csvfile[2];
+        $index++;
+    }
 ?>
 
 <!doctype html>
@@ -26,7 +37,7 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="container">
-      <h1 class="text-center">Hello <?php echo $row['firstname']; ?>  </h1>
+      <h1 class="text-center">Hello <?php echo $row['firstname']. ' ' . $row['lastname'];  ?>  </h1>
       <div class="realform"> 
         <form>
           <div class="row"> 
@@ -50,9 +61,9 @@
               <p1>What is your favorite tea? </p1>
               <select class="form-select" id="dropdown1">
                 <option selected> Choose </option>
-                <option value="1"> Green Tea </option>
-                <option value="2"> Black Tea </option>
-                <option value="3"> Herbal Tea </option>
+                <option value="1"> <?php echo $teas[0]; ?> </option>
+                <option value="2"> <?php echo $teas[1]; ?> </option>
+                <option value="3"> <?php echo $teas[2]; ?> </option>
               </select>
             </div>
           </div>
@@ -73,8 +84,8 @@
               <p1> Cold Tea or Hot Tea? </p1>
               <select class="form-select" id="dropdown2">
                 <option selected> Choose </option>
-                <option value="1">Hot Tea</option>
-                <option value="2">Cold Tea</option>
+                <option value="1"><?php echo $temperatures[0]; ?></option>
+                <option value="2"><?php echo $temperatures[1]; ?></option>
               </select>
             </div>
           </div>
@@ -109,16 +120,16 @@
               <p1> Rate this form out of 10 </p1>
               <select class="form-select" id="dropdown2">
                 <option selected> Choose </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+                <option value="1"> <?php echo $rating[0]; ?> </option>
+                <option value="2"><?php echo $rating[1]; ?></option>
+                <option value="3"><?php echo $rating[2]; ?></option>
+                <option value="4"><?php echo $rating[3]; ?></option>
+                <option value="5"><?php echo $rating[4]; ?></option>
+                <option value="6"><?php echo $rating[5]; ?></option>
+                <option value="7"><?php echo $rating[6]; ?></option>
+                <option value="8"><?php echo $rating[7]; ?></option>
+                <option value="9"><?php echo $rating[8]; ?></option>
+                <option value="10"><?php echo $rating[9]; ?></option>
 
               </select>
             </div>

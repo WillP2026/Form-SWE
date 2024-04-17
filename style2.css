@@ -2,14 +2,16 @@
     font-family: "Concert One", sans-serif;
     font-weight: 500;
     font-style: normal;
-    margin:auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 body{
     background: url("digital-background-UMBC-admin-view.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-
 .realform{
     background-color: rgb(255, 255, 255);
     margin: auto;
