@@ -23,7 +23,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        if($username != "William" && $password != "William" ){
+        if($username == "William" && $password == "William" ){
           $_SESSION['id'] = "0";
           $_SESSION['username'] = "William";
           $_SESSION['password'] = "William";
