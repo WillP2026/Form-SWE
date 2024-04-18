@@ -46,7 +46,7 @@
     <div class="container text-center"> 
         <h1 class="mt-5">UMBC Tea Form</h1>
         <div class="realform">
-          <form class="row mt-5 mb-4" method="post">
+          <form class="mt-5 mb-4" method="post">
 
             <div class="col">
               <image src="teaimage.jpg" class="img-thumbnail" width="400px">
