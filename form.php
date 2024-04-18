@@ -2,11 +2,6 @@
 <?php 
     session_start();
     require 'config.php';
-    if(!empty($_SESSION['id'])){
-      $id = $_SESSION['id'];
-      $result = mysqli_query($db,"SELECT * FROM users WHERE id =$id");
-      $row = mysqli_fetch_assoc($result);
-    }
 
     $file = fopen("dropdown.csv","r");
     $csvfile = fgetcsv($file);

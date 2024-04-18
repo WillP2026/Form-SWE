@@ -33,19 +33,9 @@
         }
         
         if($check){
-            $duplicate = mysqli_query($db,"SELECT * FROM users WHERE username = '$username'");
-            
-            if(mysqli_num_rows($duplicate) > 0){
-                echo "<div class= 'alert alert-danger'>Username has been taken already!</div>"; 
 
-            }
+            echo "<div class= 'alert alert-success'> Registration Successful! </div>"; 
             
-            else{
-                $sql = "INSERT INTO users (firstname, lastname, username, password ) VALUES(?,?,?,?)";
-                $stmtinsert = $db->prepare($sql);
-                $result = $stmtinsert->execute([$firstname, $lastname, $username, $password]);
-                echo "<div class= 'alert alert-success'> Registration Successful! </div>"; 
-            }
         }
       }
     ?>
